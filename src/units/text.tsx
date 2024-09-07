@@ -33,7 +33,7 @@ export const Text = React.memo(
           "text-fade-black": usage == "primary",
 
           "font-medium": variant === "default",
-          "font-semibold": variant === "rare",
+          "font-semibold": variant === "mid",
           "font-bold": variant === "rare",
         })}
         {...other}

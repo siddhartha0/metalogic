@@ -1,4 +1,5 @@
 import img from "./assets/background.png";
+import { Home } from "./pages";
 
 export const App = () => {
   return (
@@ -9,6 +10,8 @@ export const App = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-    ></main>
+    >
+      <Home />
+    </main>
   );
 };
