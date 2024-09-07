@@ -1,5 +1,5 @@
 import classname from "classnames";
-import React from "react";
+import React, { forwardRef } from "react";
 
 interface propTypes
   extends React.DetailedHTMLProps<
@@ -7,32 +7,32 @@ interface propTypes
     HTMLInputElement
   > {
   inputSize?: "medium" | "small" | "large";
-  children?: React.ReactNode;
   usage?: "form";
   variant?: "default";
   className?: string;
 }
 
-export const InputField = React.memo(
-  ({
-    inputSize = "medium",
-    usage = "form",
-    children,
-    variant = "default",
-    className,
-    ...other
-  }: propTypes) => {
+export const InputField = forwardRef<HTMLInputElement, propTypes>(
+  (
+    {
+      inputSize = "medium",
+      usage = "form",
+      variant = "default",
+      className,
+      ...other
+    }: propTypes,
+    ref
+  ) => {
     return (
       <input
         className={classname(`${className} outline-none`, {
-          "p-3 ": inputSize === "medium",
+          "p-3": inputSize === "medium",
           "bg-brand-primary text-black": usage === "form",
-          "rounded-lg border border-grey ": variant === "default",
+          "rounded-lg border border-grey": variant === "default",
         })}
+        ref={ref}
         {...other}
-      >
-        {children}
-      </input>
+      />
     );
   }
 );

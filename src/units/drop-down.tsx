@@ -1,7 +1,7 @@
-import classname from "classnames";
-import React from "react";
+import React, { forwardRef } from "react";
+import classnames from "classnames";
 
-interface propTypes
+interface DropDownProps
   extends React.DetailedHTMLProps<
     React.SelectHTMLAttributes<HTMLSelectElement>,
     HTMLSelectElement
@@ -13,20 +13,22 @@ interface propTypes
   options: string[];
 }
 
-export const DropDown = React.memo(
-  ({
-    inputSize = "medium",
-    usage = "form",
-    variant = "default",
-    options,
-    className,
-    ...other
-  }: propTypes) => {
+export const DropDown = forwardRef<HTMLSelectElement, DropDownProps>(
+  (
+    {
+      inputSize = "medium",
+      usage = "form",
+      variant = "default",
+      options,
+      className,
+      ...other
+    },
+    ref
+  ) => {
     return (
       <select
-        name=""
-        id=""
-        className={classname(`${className} outline-none`, {
+        ref={ref}
+        className={classnames(`${className} outline-none`, {
           "p-3 ": inputSize === "medium",
           "bg-brand-primary text-black": usage === "form",
           "rounded-lg border border-grey ": variant === "default",
@@ -42,3 +44,5 @@ export const DropDown = React.memo(
     );
   }
 );
+
+DropDown.displayName = "DropDown";

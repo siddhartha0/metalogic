@@ -7,8 +7,8 @@ interface propTypes
     HTMLParagraphElement
   > {
   children: React.ReactNode;
-  size?: "header" | "medium" | "small";
-  usage?: "brand" | "primary";
+  size?: "header" | "medium" | "small" | "tiny";
+  usage?: "brand" | "primary" | "warning";
   variant?: "default" | "mid" | "rare";
   className?: string;
 }
@@ -28,9 +28,11 @@ export const Text = React.memo(
           "text-[48px]": size == "header",
           "text-[32px]": size === "medium",
           "text-[20px]": size === "small",
+          "text-[18px]": size === "tiny",
 
           "text-black": usage == "brand",
           "text-fade-black": usage == "primary",
+          "text-warning": usage == "warning",
 
           "font-medium": variant === "default",
           "font-semibold": variant === "mid",

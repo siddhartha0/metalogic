@@ -6,6 +6,8 @@ interface propTypes {
 
 export const FormDiv = ({ children }: propTypes) => {
   return (
-    <main className="bg-brand-primary flex flex-col gap-8 p-4">{children}</main>
+    <main className="bg-brand-primary flex flex-col gap-9 px-12 py-8 rounded-lg border border-grey">
+      {children}
+    </main>
   );
 };

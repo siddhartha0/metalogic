@@ -1,4 +1,4 @@
-import img from "./assets/background.png";
+import backgroundImg from "./assets/background.png";
 import { Home } from "./pages";
 
 export const App = () => {
@@ -6,9 +6,8 @@ export const App = () => {
     <main
       className="bg-brand min-h-screen w-screen"
       style={{
-        backgroundImage: `url(${img})`,
+        backgroundImage: `url(${backgroundImg})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
       }}
     >
       <Home />

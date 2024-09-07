@@ -22,11 +22,11 @@ export const Button = React.memo(
     return (
       <button
         className={classnames(
-          `${className} text-white font-bold leading-7  hover:bg-primary`,
+          `${className} text-white font-bold leading-7  hover:bg-primary min-w-[150px]`,
 
           {
             "rounded-lg": variant === "md",
-            "py-1 px-3": size === "medium",
+            "py-2 px-3": size === "medium",
             "bg-secondary ": usage === "default",
             "bg-ternary": usage === "rare",
           }
