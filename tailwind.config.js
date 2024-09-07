@@ -15,8 +15,6 @@ module.exports = {
       grey: "#d6d6d6",
     },
     extend: {},
-    keyframes: {},
-    animation: {},
   },
   plugins: [],
 };
