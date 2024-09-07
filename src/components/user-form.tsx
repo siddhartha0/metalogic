@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Text } from "../units";
 import { AddressDetails, PersonalDetails, ProgressBar } from "./";
+import { ProfilePicDetails } from "./profile-picutre";
 
 export const UserForm = memo(() => {
   return (
@@ -9,7 +10,8 @@ export const UserForm = memo(() => {
         Register
       </Text>
       <ProgressBar />
-      <AddressDetails />
+      {/* <AddressDetails /> */}
+      <ProfilePicDetails />
     </main>
   );
 });
