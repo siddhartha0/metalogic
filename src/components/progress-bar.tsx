@@ -15,14 +15,15 @@ export const ProgressBar = () => {
     <div className="w-full max-w-md mx-auto p-6">
       <div className="relative mb-8">
         <div
-          className={`absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1  bg-grey`}
-        ></div>
+          className={`absolute top-1/2 left-0 right-0 -translate-y-1/2 animate-progress-bar-width h-1  bg-grey`}
+        />
 
         <div
-          className="absolute top-1/2 left-0  h-1 bg-secondary  -translate-y-1/2 transition-all duration-500 ease-in-out
-"
+          className="absolute top-1/2 left-0  h-1 bg-secondary  -translate-y-1/2 
+          transition-all duration-500 ease-in-out
+          "
           style={{ width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%` }}
-        ></div>
+        />
 
         <div className="relative flex justify-between">
           {[1, 2, 3, 4].map((step) => (

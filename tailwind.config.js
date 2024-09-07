@@ -14,7 +14,17 @@ module.exports = {
       white: "#fff",
       grey: "#d6d6d6",
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        "progress-bar-width": {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
+      },
+      animation: {
+        "progress-bar-width": "progress-bar-width 0.5s ease-in-out",
+      },
+    },
   },
   plugins: [],
 };
