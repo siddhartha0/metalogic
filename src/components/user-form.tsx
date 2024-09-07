@@ -13,7 +13,7 @@ export const UserForm = memo(() => {
     <PersonalDetails />,
     <AddressDetails />,
     <ProfilePicDetails />,
-    <ViewProfile />,
+    <ViewProfile isForm />,
   ];
 
   return (
@@ -22,7 +22,7 @@ export const UserForm = memo(() => {
         Register
       </Text>
       <ProgressBar />
-      {totalSteps[2]}
+      {totalSteps[3]}
     </main>
   );
 });
