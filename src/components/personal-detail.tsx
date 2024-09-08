@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useProgressContext, useUserContext } from "../context";
+import { FormInput } from "./";
 
 const personalDetailsSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -53,86 +54,52 @@ export const PersonalDetails = memo(() => {
         onSubmit={handleSubmit(onSubmit)}
         className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col   gap-7 w-full"
       >
-        <div className="flex flex-col gap-2">
-          <Text size="small">First Name</Text>
+        <FormInput label="First Name" errorMessage={errors.firstName?.message}>
           <InputField
             placeholder="Enter your first name"
             {...register("firstName")}
           />
-          {errors.firstName && (
-            <Text size="tiny" usage="warning">
-              {errors?.firstName.message as string}
-            </Text>
-          )}
-        </div>
+        </FormInput>
 
-        <div className="flex flex-col gap-2">
-          <Text size="small">Middle Name</Text>
+        <FormInput label="Middle Name">
           <InputField
             placeholder="Enter your middle name"
             {...register("middleName")}
           />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Text size="small">Last Name</Text>
+        </FormInput>
+
+        <FormInput label="Last Name" errorMessage={errors.lastName?.message}>
           <InputField
             placeholder="Enter your last name"
             {...register("lastName")}
           />
-          {errors.lastName && (
-            <Text size="tiny" usage="warning">
-              {errors?.lastName?.message as string}
-            </Text>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <Text size="small">Phone</Text>
-          <InputField placeholder="98xxxxx6x" {...register("phone")} />
-          {errors.phone && (
-            <Text size="tiny" usage="warning">
-              {errors.phone.message as string}
-            </Text>
-          )}
-        </div>
+        </FormInput>
 
-        <div className="flex flex-col gap-2">
-          <Text size="small">Birth Date</Text>
+        <FormInput label="Phone" errorMessage={errors.phone?.message}>
+          <InputField placeholder="9xxxxxxxx" {...register("phone")} />
+        </FormInput>
+
+        <FormInput label="Birth Date" errorMessage={errors.birthDate?.message}>
           <InputField
             type="date"
             placeholder="DD/MM/YYYY"
             {...register("birthDate")}
           />
-          {errors.birthDate && (
-            <Text size="tiny" usage="warning">
-              {errors.birthDate?.message as string}
-            </Text>
-          )}
-        </div>
+        </FormInput>
 
         <div className="flex flex-col gap-2 col-span-3 ">
-          <Text size="small">Birth Date</Text>
-          <div className="flex gap-2">
-            <Text size="tiny" className="flex gap-2">
-              <input type="radio" value="Male" {...register("gender")} />
-              Male
-            </Text>
-
-            <Text size="tiny" className="flex gap-2">
-              <input type="radio" value="Female" {...register("gender")} />
-              Female
-            </Text>
-
-            <Text size="tiny" className="flex gap-2">
-              <input type="radio" value="Others" {...register("gender")} />
-              Others
-            </Text>
-          </div>
-          {errors.gender && (
-            <Text size="tiny" usage="warning">
-              {errors.gender.message as string}
-            </Text>
-          )}
+          <FormInput label="Gender" errorMessage={errors.gender?.message}>
+            <div className="flex gap-2">
+              {["Male", "Female", "Others"].map((gender) => (
+                <label key={gender} className="flex gap-2">
+                  <input type="radio" value={gender} {...register("gender")} />
+                  {gender}
+                </label>
+              ))}
+            </div>
+          </FormInput>
         </div>
+
         <Button
           type="submit"
           className="flex col-span-3   place-self-end w-[20%] justify-center"
