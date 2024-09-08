@@ -10,6 +10,7 @@ interface DropDownProps
   usage?: "form";
   variant?: "default";
   className?: string;
+  placeholder: string;
   options: string[];
 }
 
@@ -20,6 +21,7 @@ export const DropDown = forwardRef<HTMLSelectElement, DropDownProps>(
       usage = "form",
       variant = "default",
       options,
+      placeholder,
       className,
       ...other
     },
@@ -35,6 +37,9 @@ export const DropDown = forwardRef<HTMLSelectElement, DropDownProps>(
         })}
         {...other}
       >
+        <option value="" disabled>
+          {placeholder}
+        </option>
         {options.map((opt, index) => (
           <option value={opt} key={index + opt}>
             {opt}

@@ -49,7 +49,11 @@ export const AddressDetails = memo(() => {
       >
         <div className="flex flex-col gap-2">
           <Text size="small">Country</Text>
-          <DropDown {...register("country")} options={CountryData} />
+          <DropDown
+            {...register("country")}
+            placeholder="Eg: Nepal"
+            options={CountryData}
+          />
           {errors.country && (
             <Text size="tiny" usage="warning">
               {errors.country.message}
@@ -58,7 +62,11 @@ export const AddressDetails = memo(() => {
         </div>
         <div className="flex flex-col gap-2">
           <Text size="small">District</Text>
-          <DropDown {...register("district")} options={DistricData} />
+          <DropDown
+            {...register("district")}
+            placeholder="Eg: Kathmandu"
+            options={DistricData}
+          />
           {errors.district && (
             <Text size="tiny" usage="warning">
               {errors.district.message}
@@ -68,7 +76,11 @@ export const AddressDetails = memo(() => {
 
         <div className="flex flex-col gap-2">
           <Text size="small">Municipality/Local</Text>
-          <DropDown {...register("municipality")} options={MunicipalityData} />
+          <DropDown
+            {...register("municipality")}
+            placeholder="Eg: Lalitpur"
+            options={MunicipalityData}
+          />
           {errors.municipality && (
             <Text size="tiny" usage="warning">
               {errors.municipality.message}
@@ -78,7 +90,7 @@ export const AddressDetails = memo(() => {
 
         <div className="flex flex-col gap-2">
           <Text size="small">City</Text>
-          <InputField {...register("city")} />
+          <InputField {...register("city")} placeholder="city..." />
           {errors.city && (
             <Text size="tiny" usage="warning">
               {errors.city.message}
@@ -87,7 +99,7 @@ export const AddressDetails = memo(() => {
         </div>
         <div className="flex flex-col gap-2">
           <Text size="small">Ward</Text>
-          <InputField {...register("ward")} />
+          <InputField {...register("ward")} placeholder="ward no..." />
           {errors.ward && (
             <Text size="tiny" usage="warning">
               {errors.ward.message}
