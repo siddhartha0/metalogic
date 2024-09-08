@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Button, FormDiv, Text } from "../units";
-import { useProgressContext } from "../context/progress-bar-context";
-import { useUserContext } from "../context/user-context";
+import { useProgressContext, useUserContext } from "../context";
 
 export const ProfilePicDetails = () => {
   const context = useProgressContext();

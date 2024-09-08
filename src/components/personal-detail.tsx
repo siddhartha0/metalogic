@@ -3,8 +3,7 @@ import { Button, FormDiv, InputField, Text } from "../units";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useProgressContext } from "../context/progress-bar-context";
-import { useUserContext } from "../context/user-context";
+import { useProgressContext, useUserContext } from "../context";
 
 const personalDetailsSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),

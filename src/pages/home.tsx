@@ -1,8 +1,7 @@
 import { memo } from "react";
 import companyLogo from "../assets/companyLogo.png";
 import { UserForm } from "../components";
-import { ProgressContent } from "../context/progress-bar-context";
-import { UserContent } from "../context/user-context";
+import { ProgressContent, UserContent } from "../context";
 
 export const Home = memo(() => {
   return (

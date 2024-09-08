@@ -4,8 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, DropDown, FormDiv, InputField, Text } from "../units";
 import { CountryData, DistricData, MunicipalityData } from "../constant";
-import { useProgressContext } from "../context/progress-bar-context";
-import { useUserContext } from "../context/user-context";
+import { useProgressContext, useUserContext } from "../context";
 
 const addressDetailsSchema = z.object({
   country: z.string().min(1, "Country is required"),

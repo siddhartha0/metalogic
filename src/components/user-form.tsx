@@ -7,7 +7,7 @@ import {
   ProfilePicDetails,
   ViewProfile,
 } from "./";
-import { useProgressContext } from "../context/progress-bar-context";
+import { useProgressContext } from "../context";
 
 export const UserForm = memo(() => {
   const context = useProgressContext();

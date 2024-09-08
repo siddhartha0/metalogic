@@ -1,8 +1,6 @@
 import { Button, FormDiv, Text } from "../units";
-
-import { useProgressContext } from "../context/progress-bar-context";
-import { useUserContext } from "../context/user-context";
-import { DisplayContent } from "./display-content";
+import { useUserContext, useProgressContext } from "../context";
+import { DisplayContent } from "./";
 
 export const ViewProfile = () => {
   const context = useProgressContext();
