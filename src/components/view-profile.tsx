@@ -2,6 +2,7 @@ import { Button, FormDiv, Text } from "../units";
 
 import { useProgressContext } from "../context/progress-bar-context";
 import { useUserContext } from "../context/user-context";
+import { DisplayContent } from "./display-content";
 
 export const ViewProfile = () => {
   const context = useProgressContext();
@@ -24,87 +25,64 @@ export const ViewProfile = () => {
         }}
         className="w-[265px] h-[256px] rounded-[61px] border border-grey "
       />
+
       <Text variant="mid">Personal Details</Text>
       <section className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col -mt-6 gap-y-2 gap-x-8">
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            First Name :
-          </Text>
-          <Text size="small">{userContext?.personalDetails.firstName}</Text>
-        </div>
+        <DisplayContent
+          title="First Name"
+          content={userContext?.personalDetails.firstName ?? ""}
+        />
         {userContext?.personalDetails.middleName && (
-          <div className="flex gap-2 ">
-            <Text size="small" variant="rare">
-              Middle Name :
-            </Text>
-            <Text size="small">{userContext?.personalDetails.middleName}</Text>
-          </div>
+          <DisplayContent
+            title="Middle Name"
+            content={userContext?.personalDetails.middleName ?? ""}
+          />
         )}
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Last Name :
-          </Text>
-          <Text size="small">{userContext?.personalDetails.lastName}</Text>
-        </div>
+        <DisplayContent
+          title="Last Name"
+          content={userContext?.personalDetails.lastName ?? ""}
+        />
 
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Phone :
-          </Text>
-          <Text size="small">{userContext?.personalDetails.phone}</Text>
-        </div>
-
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Birth Date :
-          </Text>
-          <Text size="small">{userContext?.personalDetails.birthDate}</Text>
-        </div>
-
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Gender :
-          </Text>
-          <Text size="small">{userContext?.personalDetails.gender}</Text>
-        </div>
+        <DisplayContent
+          title="Phone"
+          content={userContext?.personalDetails.phone ?? ""}
+        />
+        <DisplayContent
+          title="Birth Date"
+          content={userContext?.personalDetails.birthDate ?? ""}
+        />
+        <DisplayContent
+          title="Gender"
+          content={userContext?.personalDetails.gender ?? ""}
+        />
       </section>
 
       <Text variant="mid">Address </Text>
       <section className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col -mt-6 gap-y-2 gap-x-8">
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Country :
-          </Text>
-          <Text size="small">{userContext?.addressDetails.country}</Text>
-        </div>
+        <DisplayContent
+          title="Country"
+          content={userContext?.addressDetails.country ?? ""}
+        />
 
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            District :
-          </Text>
-          <Text size="small">{userContext?.addressDetails.district}</Text>
-        </div>
+        <DisplayContent
+          title="District"
+          content={userContext?.addressDetails.district ?? ""}
+        />
 
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Municipality/Local :
-          </Text>
-          <Text size="small">{userContext?.addressDetails.municipality}</Text>
-        </div>
+        <DisplayContent
+          title="Municipality/Local"
+          content={userContext?.addressDetails.municipality ?? ""}
+        />
 
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            City :
-          </Text>
-          <Text size="small">{userContext?.addressDetails.city}</Text>
-        </div>
+        <DisplayContent
+          title="City"
+          content={userContext?.addressDetails.city ?? ""}
+        />
 
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Ward :
-          </Text>
-          <Text size="small">{userContext?.addressDetails.ward}</Text>
-        </div>
+        <DisplayContent
+          title="Ward"
+          content={userContext?.addressDetails.ward ?? ""}
+        />
       </section>
 
       {!context?.isFormCompleted && (
