@@ -45,7 +45,7 @@ export const AddressDetails = memo(() => {
       <Text variant="mid">Address</Text>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-3 gap-7 w-full"
+        className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col   gap-7 w-full"
       >
         <div className="flex flex-col gap-2">
           <Text size="small">Country</Text>

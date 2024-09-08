@@ -12,7 +12,7 @@ export const ViewProfile = () => {
   };
 
   return (
-    <FormDiv className="min-w-[862px]">
+    <FormDiv className="md:min-w-[862px]">
       <Text usage="primary" variant="rare" className="flex place-self-center">
         {context?.isFormCompleted ? "My Details" : "Review Your Details"}
       </Text>
@@ -25,7 +25,7 @@ export const ViewProfile = () => {
         className="w-[265px] h-[256px] rounded-[61px] border border-grey "
       />
       <Text variant="mid">Personal Details</Text>
-      <section className="grid grid-cols-3 -mt-6 gap-y-2 gap-x-8">
+      <section className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col -mt-6 gap-y-2 gap-x-8">
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
             First Name :
@@ -70,7 +70,7 @@ export const ViewProfile = () => {
       </section>
 
       <Text variant="mid">Address </Text>
-      <section className="grid grid-cols-3 -mt-6 gap-y-2 gap-x-8">
+      <section className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col -mt-6 gap-y-2 gap-x-8">
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
             Country :

@@ -51,7 +51,7 @@ export const PersonalDetails = memo(() => {
       <Text variant="mid">Personal Details</Text>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-3 gap-7 w-full"
+        className="md:grid  md:grid-cols-2  lg:grid-cols-3 flex flex-col   gap-7 w-full"
       >
         <div className="flex flex-col gap-2">
           <Text size="small">First Name</Text>
@@ -65,6 +65,7 @@ export const PersonalDetails = memo(() => {
             </Text>
           )}
         </div>
+
         <div className="flex flex-col gap-2">
           <Text size="small">Middle Name</Text>
           <InputField

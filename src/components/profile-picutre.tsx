@@ -29,7 +29,7 @@ export const ProfilePicDetails = () => {
   };
 
   return (
-    <FormDiv className="min-w-[815px] place-items-center">
+    <FormDiv className="md:min-w-[815px] place-items-center">
       <Text usage="primary" variant="rare">
         Set Your Profile Picture
       </Text>
