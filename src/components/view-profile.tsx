@@ -1,5 +1,5 @@
 import { Button, FormDiv, Text } from "../units";
-import img from "../assets/scholar.png";
+
 import { useProgressContext } from "../context/progress-bar-context";
 import { useUserContext } from "../context/user-context";
 
@@ -18,7 +18,7 @@ export const ViewProfile = () => {
       </Text>
       <div
         style={{
-          backgroundImage: `url(${img})`,
+          backgroundImage: `url(${userContext?.img})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -32,14 +32,14 @@ export const ViewProfile = () => {
           </Text>
           <Text size="small">{userContext?.personalDetails.firstName}</Text>
         </div>
-
-        <div className="flex gap-2 ">
-          <Text size="small" variant="rare">
-            Middle Name :
-          </Text>
-          <Text size="small">{userContext?.personalDetails.middleName}</Text>
-        </div>
-
+        {userContext?.personalDetails.middleName && (
+          <div className="flex gap-2 ">
+            <Text size="small" variant="rare">
+              Middle Name :
+            </Text>
+            <Text size="small">{userContext?.personalDetails.middleName}</Text>
+          </div>
+        )}
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
             Last Name :
