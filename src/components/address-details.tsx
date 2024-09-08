@@ -25,6 +25,7 @@ export const AddressDetails = memo(() => {
     formState: { errors },
   } = useForm<AddressDetailsFormData>({
     resolver: zodResolver(addressDetailsSchema),
+    defaultValues: userContext?.addressDetails,
     mode: "onChange",
   });
 

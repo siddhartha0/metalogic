@@ -30,6 +30,7 @@ export const PersonalDetails = memo(() => {
     formState: { errors },
   } = useForm<PersonalDetailsFormData>({
     resolver: zodResolver(personalDetailsSchema),
+    defaultValues: userContext?.personalDetails,
     mode: "onChange",
   });
 
