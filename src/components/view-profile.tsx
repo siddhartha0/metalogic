@@ -4,7 +4,7 @@ import { useProgressContext } from "../context/progress-bar-context";
 
 export const ViewProfile = () => {
   const context = useProgressContext();
-
+  console.log(context?.isFormCompleted);
   const submitForm = () => {
     context?.setIsFormCompleted(true);
   };
@@ -12,7 +12,7 @@ export const ViewProfile = () => {
   return (
     <FormDiv className="min-w-[862px]">
       <Text usage="primary" variant="rare" className="flex place-self-center">
-        {context?.isFormCompleted ? "Review Your Details" : "My Details"}
+        {context?.isFormCompleted ? "My Details" : "Review Your Details"}
       </Text>
       <div
         style={{
@@ -105,19 +105,16 @@ export const ViewProfile = () => {
         </div>
       </section>
 
-      {context?.isFormCompleted && (
+      {!context?.isFormCompleted && (
         <div className="flex col-span-3 place-self-end gap-4 justify-center mt-4">
           <Button
-            type="button"
             usage="rare"
             onClick={() => context?.setCurrentStep((current) => current - 1)}
           >
             Back
           </Button>
 
-          <Button type="submit" onClick={submitForm}>
-            Submit
-          </Button>
+          <Button onClick={() => submitForm()}>Submit</Button>
         </div>
       )}
     </FormDiv>
