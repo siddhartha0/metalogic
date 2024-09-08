@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Button, FormDiv, Text } from "../units";
 import { useProgressContext } from "../context/progress-bar-context";
+import { useUserContext } from "../context/user-context";
 
 export const ProfilePicDetails = () => {
   const context = useProgressContext();
 
-  const [img, setImg] = useState<string | ArrayBuffer | null>(null);
+  const userContext = useUserContext();
 
   const imgRef = useRef<HTMLInputElement | null>(null);
 
@@ -17,7 +18,7 @@ export const ProfilePicDetails = () => {
       reader.readAsDataURL(docs);
       reader.onloadend = function () {
         if (reader.result) {
-          setImg(reader.result);
+          userContext?.setImg(reader.result);
         }
       };
     }
@@ -33,12 +34,12 @@ export const ProfilePicDetails = () => {
         Set Your Profile Picture
       </Text>
 
-      {img && (
+      {userContext?.img && (
         <div className="flex flex-col gap-2">
-          {typeof img === "string" && (
+          {typeof userContext?.img === "string" && (
             <div
               style={{
-                backgroundImage: `url(${img})`,
+                backgroundImage: `url(${userContext?.img})`,
                 backgroundSize: "cover",
               }}
               className="w-[265px] h-[256px] rounded-xl "

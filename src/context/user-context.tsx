@@ -10,6 +10,8 @@ interface userTypes {
   setAddressDetails: React.Dispatch<
     React.SetStateAction<AddressDetailsFormData>
   >;
+  img: string | ArrayBuffer | null;
+  setImg: React.Dispatch<React.SetStateAction<string | ArrayBuffer | null>>;
 }
 
 const userDetailsContext = createContext<userTypes | null>(null);
@@ -32,6 +34,7 @@ export const UserContent = ({ children }: { children: React.ReactNode }) => {
     city: "",
     ward: "",
   });
+  const [img, setImg] = useState<string | ArrayBuffer | null>(null);
 
   return (
     <userDetailsContext.Provider
@@ -40,6 +43,8 @@ export const UserContent = ({ children }: { children: React.ReactNode }) => {
         setPersonalDetails,
         personalDetails,
         setAddressDetails,
+        img,
+        setImg,
       }}
     >
       {children}
