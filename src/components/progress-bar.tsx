@@ -31,7 +31,7 @@ export const ProgressBar = () => {
                 step <= currentStep
                   ? "bg-secondary text-white"
                   : "bg-primary text-white  "
-              } ${step === 4 ? "bg-purple-500" : ""}`}
+              } `}
             >
               {step === currentStep && (
                 <div className="absolute -top-4  w-9 ">

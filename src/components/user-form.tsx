@@ -21,10 +21,12 @@ export const UserForm = memo(() => {
 
   return (
     <main className="flex flex-col gap-6 w-full place-items-center">
-      <Text size="header" variant="rare">
-        Register
-      </Text>
-      <ProgressBar />
+      {!context?.isFormCompleted && (
+        <Text size="header" variant="rare">
+          Register
+        </Text>
+      )}
+      {!context?.isFormCompleted && <ProgressBar />}
       {totalSteps[(context?.currentStep ?? 0) - 1]}
     </main>
   );
