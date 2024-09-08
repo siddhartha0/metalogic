@@ -4,6 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, DropDown, FormDiv, InputField, Text } from "../units";
 import { CountryData, DistricData, MunicipalityData } from "../constant";
+import { useProgressContext } from "../context/progress-bar-context";
 
 const addressDetailsSchema = z.object({
   country: z.string().min(1, "Country is required"),
@@ -16,6 +17,8 @@ const addressDetailsSchema = z.object({
 export type AddressDetailsFormData = z.infer<typeof addressDetailsSchema>;
 
 export const AddressDetails = memo(() => {
+  const context = useProgressContext();
+
   const {
     register,
     handleSubmit,
@@ -27,6 +30,7 @@ export const AddressDetails = memo(() => {
 
   const onSubmit: SubmitHandler<AddressDetailsFormData> = (data) => {
     console.log(data);
+    context?.setCurrentStep((curre) => curre + 1);
   };
 
   return (
@@ -85,7 +89,11 @@ export const AddressDetails = memo(() => {
         </div>
 
         <div className="flex col-span-3 place-self-end gap-4 justify-center mt-4">
-          <Button type="button" usage="rare">
+          <Button
+            type="button"
+            usage="rare"
+            onClick={() => context?.setCurrentStep((current) => current - 1)}
+          >
             Back
           </Button>
 

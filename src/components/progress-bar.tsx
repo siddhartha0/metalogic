@@ -1,15 +1,11 @@
-import { useState } from "react";
 import img from "../assets/scholar.png";
+import { useProgressContext } from "../context/progress-bar-context";
 
 export const ProgressBar = () => {
-  const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
+  const context = useProgressContext();
 
-  const handleNext = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
+  const currentStep = context?.currentStep ?? 1;
 
   return (
     <div className="w-full max-w-md mx-auto p-6">
@@ -22,7 +18,9 @@ export const ProgressBar = () => {
           className="absolute top-1/2 left-0  h-1 bg-secondary  -translate-y-1/2 
           transition-all duration-500 ease-in-out
           "
-          style={{ width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%` }}
+          style={{
+            width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%`,
+          }}
         />
 
         <div className="relative flex justify-between">
@@ -45,13 +43,6 @@ export const ProgressBar = () => {
           ))}
         </div>
       </div>
-      <button
-        onClick={handleNext}
-        className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-300"
-        disabled={currentStep === totalSteps}
-      >
-        {currentStep === totalSteps ? "Completed" : "Next"}
-      </button>
     </div>
   );
 };

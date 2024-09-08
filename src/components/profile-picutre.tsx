@@ -1,7 +1,10 @@
 import { useRef, useState } from "react";
 import { Button, FormDiv, Text } from "../units";
+import { useProgressContext } from "../context/progress-bar-context";
 
 export const ProfilePicDetails = () => {
+  const context = useProgressContext();
+
   const [img, setImg] = useState<string | ArrayBuffer | null>(null);
 
   const imgRef = useRef<HTMLInputElement | null>(null);
@@ -18,6 +21,10 @@ export const ProfilePicDetails = () => {
         }
       };
     }
+  };
+
+  const submitForm = () => {
+    context?.setCurrentStep((cur) => cur + 1);
   };
 
   return (
@@ -56,11 +63,14 @@ export const ProfilePicDetails = () => {
       </label>
 
       <div className="flex col-span-3 place-self-end gap-4 justify-center mt-4">
-        <Button type="button" usage="rare">
+        <Button
+          usage="rare"
+          onClick={() => context?.setCurrentStep((current) => current - 1)}
+        >
           Back
         </Button>
 
-        <Button type="submit">Next</Button>
+        <Button onClick={submitForm}>Next</Button>
       </div>
     </FormDiv>
   );

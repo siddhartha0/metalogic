@@ -1,15 +1,18 @@
 import { Button, FormDiv, Text } from "../units";
 import img from "../assets/scholar.png";
+import { useProgressContext } from "../context/progress-bar-context";
 
-interface propTypes {
-  isForm: boolean;
-}
+export const ViewProfile = () => {
+  const context = useProgressContext();
 
-export const ViewProfile = ({ isForm }: propTypes) => {
+  const submitForm = () => {
+    context?.setIsFormCompleted(true);
+  };
+
   return (
     <FormDiv className="min-w-[862px]">
       <Text usage="primary" variant="rare" className="flex place-self-center">
-        {isForm ? "Review Your Details" : "My Details"}
+        {context?.isFormCompleted ? "Review Your Details" : "My Details"}
       </Text>
       <div
         style={{
@@ -102,13 +105,19 @@ export const ViewProfile = ({ isForm }: propTypes) => {
         </div>
       </section>
 
-      {isForm && (
+      {context?.isFormCompleted && (
         <div className="flex col-span-3 place-self-end gap-4 justify-center mt-4">
-          <Button type="button" usage="rare">
+          <Button
+            type="button"
+            usage="rare"
+            onClick={() => context?.setCurrentStep((current) => current - 1)}
+          >
             Back
           </Button>
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" onClick={submitForm}>
+            Submit
+          </Button>
         </div>
       )}
     </FormDiv>

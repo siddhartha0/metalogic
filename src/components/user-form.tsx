@@ -7,13 +7,16 @@ import {
   ProfilePicDetails,
   ViewProfile,
 } from "./";
+import { useProgressContext } from "../context/progress-bar-context";
 
 export const UserForm = memo(() => {
+  const context = useProgressContext();
+
   const totalSteps = [
     <PersonalDetails />,
     <AddressDetails />,
     <ProfilePicDetails />,
-    <ViewProfile isForm />,
+    <ViewProfile />,
   ];
 
   return (
@@ -22,7 +25,7 @@ export const UserForm = memo(() => {
         Register
       </Text>
       <ProgressBar />
-      {totalSteps[3]}
+      {totalSteps[(context?.currentStep ?? 0) - 1]}
     </main>
   );
 });

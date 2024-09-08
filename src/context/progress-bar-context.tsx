@@ -34,5 +34,5 @@ export const ProgressContent = ({ children }: contentPropTypes) => {
 export const useProgressContext = () => {
   const context = useContext(progressContext);
 
-  return context;
+  if (context) return context;
 };
