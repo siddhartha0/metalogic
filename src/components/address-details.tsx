@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, DropDown, FormDiv, InputField, Text } from "../units";
 import { CountryData, DistricData, MunicipalityData } from "../constant";
 import { useProgressContext } from "../context/progress-bar-context";
+import { useUserContext } from "../context/user-context";
 
 const addressDetailsSchema = z.object({
   country: z.string().min(1, "Country is required"),
@@ -18,7 +19,7 @@ export type AddressDetailsFormData = z.infer<typeof addressDetailsSchema>;
 
 export const AddressDetails = memo(() => {
   const context = useProgressContext();
-
+  const userContext = useUserContext();
   const {
     register,
     handleSubmit,
@@ -29,7 +30,13 @@ export const AddressDetails = memo(() => {
   });
 
   const onSubmit: SubmitHandler<AddressDetailsFormData> = (data) => {
-    console.log(data);
+    userContext?.setAddressDetails({
+      city: data.city,
+      country: data.country,
+      district: data.district,
+      municipality: data.municipality,
+      ward: data.ward,
+    });
     context?.setCurrentStep((curre) => curre + 1);
   };
 

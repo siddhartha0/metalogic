@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useProgressContext } from "../context/progress-bar-context";
+import { useUserContext } from "../context/user-context";
 
 const personalDetailsSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
@@ -22,6 +23,7 @@ export type PersonalDetailsFormData = z.infer<typeof personalDetailsSchema>;
 
 export const PersonalDetails = memo(() => {
   const context = useProgressContext();
+  const userContext = useUserContext();
   const {
     register,
     handleSubmit,
@@ -33,7 +35,15 @@ export const PersonalDetails = memo(() => {
   });
 
   const onSubmit: SubmitHandler<PersonalDetailsFormData> = (data) => {
-    console.log(data);
+    userContext?.setPersonalDetails({
+      birthDate: data.birthDate,
+      firstName: data.firstName,
+      gender: data.gender,
+      lastName: data.lastName,
+      phone: data.phone,
+      middleName: data?.middleName,
+    });
+
     context?.setCurrentStep((current) => current + 1);
   };
   return (

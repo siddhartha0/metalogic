@@ -1,10 +1,12 @@
 import { Button, FormDiv, Text } from "../units";
 import img from "../assets/scholar.png";
 import { useProgressContext } from "../context/progress-bar-context";
+import { useUserContext } from "../context/user-context";
 
 export const ViewProfile = () => {
   const context = useProgressContext();
-  console.log(context?.isFormCompleted);
+  const userContext = useUserContext();
+
   const submitForm = () => {
     context?.setIsFormCompleted(true);
   };
@@ -28,42 +30,42 @@ export const ViewProfile = () => {
           <Text size="small" variant="rare">
             First Name :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.personalDetails.firstName}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Middle Name :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.personalDetails.middleName}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Last Name :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.personalDetails.lastName}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Phone :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.personalDetails.phone}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Birth Date :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.personalDetails.birthDate}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Gender :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.personalDetails.gender}</Text>
         </div>
       </section>
 
@@ -71,37 +73,37 @@ export const ViewProfile = () => {
       <section className="grid grid-cols-3 -mt-6 gap-y-2 gap-x-8">
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Country :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.addressDetails.country}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            District :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.addressDetails.district}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Municipality/Local :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.addressDetails.municipality}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            City :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.addressDetails.city}</Text>
         </div>
 
         <div className="flex gap-2 ">
           <Text size="small" variant="rare">
-            First Name :
+            Ward :
           </Text>
-          <Text size="small">Raju</Text>
+          <Text size="small">{userContext?.addressDetails.ward}</Text>
         </div>
       </section>
 
